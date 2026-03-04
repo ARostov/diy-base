@@ -48,8 +48,11 @@ export interface Step {
   order: number;
   title: string;
   description: string;
+  details?: string[];         // добавить
+  tip?: string;              // добавить
   knowledgeRefs?: string[];
   materialRefs?: string[];
+  materials?: string[];       // добавить (для совместимости)
 }
 
 // Материалы
