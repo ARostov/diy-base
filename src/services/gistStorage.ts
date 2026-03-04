@@ -28,7 +28,7 @@ export class GistStorage implements StorageService {
           status: 'construction',
           createdAt: '2024-01-01',
           updatedAt: '2024-01-25',
-          description: 'Участок — твердая супесь • штакетник двусторонний • М‑образный профиль • ворота на 3 столбах 100х100 • лаги с двух сторон',
+          // description: 'Участок — твердая супесь • штакетник двусторонний • М‑образный профиль • ворота на 3 столбах 100х100 • лаги с двух сторон',
           children: [
             {
               id: 'fence_main',

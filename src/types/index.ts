@@ -4,6 +4,7 @@ export interface Project {
   id: string;
   name: string;
   status: ProjectStatus;
+  description?: string;
   children?: ProjectNode[];
   createdAt: string;
   updatedAt: string;
