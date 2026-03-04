@@ -8,14 +8,15 @@ import {
 } from '../types';
 
 export class GistStorage implements StorageService {
-  private _gistId: string | null = null; // Добавляем _
-  private _token: string | null = null; // Добавляем _
+  private _gistId: string | null = null;
+  private _token: string | null = null;
 
   constructor(gistId?: string, token?: string) {
     this._gistId = gistId || localStorage.getItem('diy_base_gist_id');
     this._token = token || localStorage.getItem('github_token');
   }
 
+  // Проекты
   async getProjects(): Promise<ProjectsFile | null> {
     // Заглушка для MVP - вернем тестовые данные
     return {
@@ -97,5 +98,127 @@ export class GistStorage implements StorageService {
     };
   }
 
-  // ... остальные методы без изменений
+  async saveProjects(data: ProjectsFile): Promise<boolean> {
+    console.log('Save projects:', data);
+    // Здесь будет логика сохранения в Gist
+    return true;
+  }
+
+  // Материалы
+  async getMaterials(): Promise<MaterialsFile | null> {
+    return {
+      version: '1.0',
+      categories: [
+        {
+          name: 'Трубы профильные',
+          materials: [
+            {
+              id: 'mat_1',
+              name: 'Профтруба 60х60х3',
+              unit: 'м',
+              description: 'Для столбов'
+            },
+            {
+              id: 'mat_2',
+              name: 'Профтруба 40х20х2',
+              unit: 'м',
+              description: 'Для лаг'
+            }
+          ]
+        },
+        {
+          name: 'Фурнитура для ворот',
+          materials: [
+            {
+              id: 'mat_3',
+              name: 'Комплект откатных ворот',
+              unit: 'компл',
+              description: 'Ролики, направляющая, уловители'
+            },
+            {
+              id: 'mat_4',
+              name: 'Петли гаражные',
+              unit: 'шт',
+              description: 'Усиленные, с подшипником'
+            }
+          ]
+        }
+      ]
+    };
+  }
+
+  async saveMaterials(data: MaterialsFile): Promise<boolean> {
+    console.log('Save materials:', data);
+    return true;
+  }
+
+  // Поставщики
+  async getSuppliers(): Promise<SuppliersFile | null> {
+    return {
+      version: '1.0',
+      suppliers: [
+        {
+          id: 'sup_1',
+          name: 'Металлобаза на Южной',
+          contacts: '+7 (999) 123-45-67',
+          note: 'Есть доставка, работают в субботу'
+        }
+      ]
+    };
+  }
+
+  async saveSuppliers(data: SuppliersFile): Promise<boolean> {
+    console.log('Save suppliers:', data);
+    return true;
+  }
+
+  // Цены
+  async getPrices(): Promise<PricesFile | null> {
+    return {
+      version: '1.0',
+      prices: [
+        {
+          materialId: 'mat_1',
+          supplierId: 'sup_1',
+          price: 850,
+          date: '2024-01-15',
+          note: 'за метр'
+        }
+      ]
+    };
+  }
+
+  async savePrices(data: PricesFile): Promise<boolean> {
+    console.log('Save prices:', data);
+    return true;
+  }
+
+  // База знаний
+  async getKnowledge(): Promise<KnowledgeFile | null> {
+    return {
+      version: '1.0',
+      categories: [
+        {
+          name: 'Фундамент',
+          subcategories: [
+            {
+              name: 'Столбчатый фундамент',
+              articles: [
+                {
+                  id: 'kb_1',
+                  title: 'Как бурить ямы под столбы',
+                  content: 'Для бурения ям под столбы лучше всего использовать садовый бур диаметром 200мм...'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+  }
+
+  async saveKnowledge(data: KnowledgeFile): Promise<boolean> {
+    console.log('Save knowledge:', data);
+    return true;
+  }
 }
